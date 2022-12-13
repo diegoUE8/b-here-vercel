@@ -1,0 +1,165 @@
+@use "sass:math";
+
+@mixin ratio($width, $ratio) {
+	width: $width;
+	height: math.div($width, $ratio);
+}
+
+html,
+body {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	position: fixed;
+	overflow: hidden;
+	background: $background-negative;
+}
+
+[b-here],
+.b-here,
+.page {
+	width: 100%;
+	height: 100%;
+}
+
+.page {
+	background: $background;
+
+	&>.background {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100vw;
+		height: calc(var(--vh, 1vh) * 100);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background: $background-negative;
+
+		&>img,
+		&>video {
+			object-fit: cover;
+			width: 100%;
+			height: 100%;
+			// filter: blur(24px);
+		}
+
+		&>video {
+			opacity: 0;
+			transition: opacity ease-in-out 350ms;
+
+			&.ready {
+				opacity: 1;
+			}
+		}
+
+		&:after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: $background-negative;
+			opacity: 0.8;
+		}
+
+		&.background--image.background--video {
+			@include media-up(sm) {
+
+				&>img {
+					display: none;
+				}
+
+				&>video {
+					display: block;
+				}
+			}
+
+			@include media-down(xs) {
+
+				&>img {
+					display: block;
+				}
+
+				&>video {
+					display: none;
+				}
+			}
+		}
+	}
+
+	&>.btn--credits {
+		position: absolute;
+		left: 30px;
+		bottom: 26px;
+	}
+
+	&>.btn--absolute {
+		/*
+		position: absolute;
+		top: 15px;
+		right: 15px;
+		z-index: 10000;
+		*/
+		position: absolute;
+		right: 15px;
+		bottom: 15px;
+		z-index: 10000;
+		// left: 50%;
+		// transform: translateX(-50%);
+	}
+}
+
+footer {
+	position: absolute;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 70px;
+	width: 100%;
+	bottom: 0;
+	padding: 15px;
+	z-index: 10000;
+	// border-top: 1px solid rgba(0, 0, 0, 0.3);
+
+	@include media-down(xs) {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		height: auto;
+
+		.btn--absolute {
+			order: 1;
+			margin-bottom: 20px;
+		}
+
+		.group--colophon {
+			order: 2;
+		}
+
+		.btn--credits {
+			display: none;
+		}
+	}
+}
+
+.group--colophon {
+	display: flex;
+	font-size: 12px;
+	color: $foreground-negative;
+	text-align: center;
+
+	@include media-up(sm) {
+		&>* {
+			margin-right: 8px;
+		}
+	}
+
+	@include media-down(xs) {
+		flex-direction: column;
+		align-items: center;
+	}
+}

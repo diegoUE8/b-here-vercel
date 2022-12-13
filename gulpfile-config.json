@@ -1,0 +1,202 @@
+﻿{
+  "targets": {
+    "browser": {
+      "compile": [
+        {
+          "input": "src/*.html",
+          "output": "docs/",
+          "minify": true
+        },
+        {
+          "input": "src/css/main-cssvars.scss",
+          "output": "docs/css/main.css",
+          "minify": true
+        },
+        {
+          "input": "src/js/main.js",
+          "output": {
+            "file": "docs/js/main.js",
+            "format": "umd"
+          },
+          "globals": {
+            "agora-rtm-sdk": "AgoraRTM",
+            "gsap": "gsap",
+            "html2canvas": "html2canvas",
+            "rxjs": "rxjs",
+            "rxjs/operators": "rxjs.operators",
+            "rxcomp": "rxcomp",
+            "rxcomp-form": "rxcomp.form",
+            "three": "THREE"
+          },
+          "minify": true
+        },
+        {
+          "input": "src/js/image/image.service.worker.js",
+          "output": {
+            "file": "docs/js/workers/image.service.worker.js",
+            "format": "umd"
+          },
+          "minify": true
+        },
+        {
+          "input": "src/js/prefetch/prefetch.service.worker.js",
+          "output": {
+            "file": "docs/js/workers/prefetch.service.worker.js",
+            "format": "umd"
+          },
+          "minify": true
+        }
+      ],
+      "bundle": [],
+      "copy": []
+    },
+    "vendors": {
+      "compile": [
+        {
+          "input": "node_modules/three/build/three.module.js",
+          "output": {
+            "file": "docs/js/three.umd.js",
+            "format": "umd"
+          },
+          "name": "THREE"
+        }
+      ],
+      "bundle": [
+        {
+          "input": [
+            "node_modules/agora-rtc-sdk/AgoraRTCSDK.min.js",
+            "node_modules/agora-rtm-sdk/index.js",
+            "node_modules/hls.js/dist/hls.js",
+            "node_modules/rxjs/bundles/rxjs.umd.js",
+            "node_modules/rxcomp/dist/umd/rxcomp.js",
+            "node_modules/rxcomp-form/dist/umd/rxcomp-form.js",
+            "node_modules/gsap/dist/EasePack.js",
+            "node_modules/gsap/dist/gsap.js",
+            "node_modules/qrious/dist/qrious.js",
+            "node_modules/html2canvas/dist/html2canvas.js",
+            "docs/js/three.umd.js",
+            "docs/js/draco-loader.umd.js",
+            "docs/js/gltf-loader.umd.js",
+            "docs/js/rgbe-loader.umd.js"
+          ],
+          "output": "docs/js/vendors.js",
+          "minify": true
+        },
+        {
+          "input": [
+            "node_modules/rxcomp/dist/rxcomp-dark.css"
+          ],
+          "output": "docs/css/vendors.css",
+          "minify": true
+        }
+      ],
+      "copy": [
+        {
+          "input": "node_modules/three/examples/js/libs/draco/**/*.*",
+          "output": "docs/js/draco/"
+        }
+      ]
+    },
+    "dist": {
+      "compile": [
+        {
+          "input": "src/css/main-cssvars.scss",
+          "output": "dist/css/lib/bhere.css",
+          "minify": false
+        },
+        {
+          "input": "src/js/bhere.js",
+          "output": {
+            "file": "dist/js/lib/bhere.iife.js",
+            "format": "iife",
+            "name": "BHere"
+          },
+          "globals": {
+            "agora-rtm-sdk": "AgoraRTM",
+            "gsap": "gsap",
+            "html2canvas": "html2canvas",
+            "rxjs": "rxjs",
+            "rxjs/operators": "rxjs.operators",
+            "rxcomp": "rxcomp",
+            "rxcomp-form": "rxcomp.form",
+            "three": "THREE"
+          },
+          "minify": false
+        },
+        {
+          "input": "src/js/image/image.service.worker.js",
+          "output": {
+            "file": "dist/js/workers/image.service.worker.js",
+            "format": "umd"
+          },
+          "minify": true
+        },
+        {
+          "input": "src/js/prefetch/prefetch.service.worker.js",
+          "output": {
+            "file": "dist/js/workers/prefetch.service.worker.js",
+            "format": "umd"
+          },
+          "minify": true
+        },
+        {
+          "input": "node_modules/three/build/three.module.js",
+          "output": {
+            "file": "dist/js/lib/three.umd.js",
+            "format": "umd"
+          },
+          "name": "THREE"
+        }
+      ],
+      "bundle": [
+        {
+          "input": [
+            "node_modules/agora-rtc-sdk/AgoraRTCSDK.min.js",
+            "node_modules/agora-rtm-sdk/index.js",
+            "node_modules/hls.js/dist/hls.js",
+            "node_modules/rxjs/bundles/rxjs.umd.js",
+            "node_modules/rxcomp/dist/iife/rxcomp.js",
+            "node_modules/rxcomp-form/dist/iife/rxcomp-form.js",
+            "node_modules/gsap/dist/EasePack.js",
+            "node_modules/gsap/dist/gsap.js",
+            "node_modules/qrious/dist/qrious.js",
+            "node_modules/html2canvas/dist/html2canvas.js",
+            "dist/js/lib/three.umd.js",
+            "dist/js/lib/bhere.iife.js"
+          ],
+          "output": "dist/js/bhere.js",
+          "minify": true
+        },
+        {
+          "input": [
+            "node_modules/rxcomp/dist/rxcomp-dark.css",
+            "dist/css/lib/bhere.css"
+          ],
+          "output": "dist/css/bhere.css",
+          "minify": true
+        }
+      ],
+      "copy": [
+        {
+          "input": "node_modules/three/examples/js/libs/draco/**/*.*",
+          "output": "dist/js/draco/"
+        },
+        {
+          "input": "dist/**/*.*",
+          "output": "docs/dist/"
+        }
+      ]
+    }
+  },
+  "tfs": false,
+  "server": {
+    "root": "./docs",
+    "path": "/b-here/",
+    "host": "0.0.0.0",
+    "port": 41789,
+    "log": false,
+    "https": {
+      "cert": "cert.crt"
+    }
+  }
+}

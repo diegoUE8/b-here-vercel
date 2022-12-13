@@ -1,0 +1,51 @@
+{
+  "views": [
+    {
+      "id": 170427763401500,
+      "type": {
+        "id": 1,
+        "name": "waiting-room"
+      },
+      "name": "Waiting Room",
+      "likes": 40,
+      "liked": false,
+      "asset": {
+        "type": {
+          "id": 1,
+          "name": "image"
+        },
+        "folder": "/textures/waiting-room/",
+        "file": "waiting-room.jpg"
+      },
+      "orientation": {
+        "latitude": 0,
+        "longitude": 0
+      },
+      "zoom": 75
+    },
+    {
+      "id": 170427763402500,
+      "type": {
+        "id": 2,
+        "name": "panorama"
+      },
+      "name": "Welcome Room",
+      "likes": 134,
+      "liked": false,
+      "asset": {
+        "type": {
+          "id": 1,
+          "name": "image"
+        },
+        "folder": "/textures/welcome-room/",
+        "file": "welcome-room.jpg"
+      },
+      "orientation": {
+        "latitude": 0,
+        "longitude": 0
+      },
+      "zoom": 75,
+      "items": []
+    }
+  ]
+}
