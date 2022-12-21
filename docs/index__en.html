@@ -71,10 +71,10 @@
 			prefetch: '/docs/js/workers/prefetch.service.worker.js',
 		},
 		textures: {
-			envMap: 'textures/envMap/studio_small_03_2k.hdr',
+			envMap: 'textures/envMap/studio.hdr',
 			grid: 'textures/grid/grid.jpg',
 		},
-		toneMappingExposure: 1,
+		toneMappingExposure: 1.5,
 		githubDocs: 'https://raw.githubusercontent.com/actarian/b-here/beta-bhere-sso/docs/',
 		template: {
 			email: {
@@ -116,8 +116,8 @@
 			useEncryptedUrl: false,
 			gdprRoutes: true,
 			selfService: true,
-			guidedTourRequest: false,
-			guidedTourAccess: false,
+			guidedTourRequest: true,
+			guidedTourAccess: true,
 			ssoLogin: false,
 			ssoRegister: false,
 			editor: true,
