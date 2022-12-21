@@ -14,7 +14,7 @@
           "id": 1,
           "name": "image"
         },
-        "folder": "/textures/waiting-room/",
+        "folder": "/textures/waiting/",
         "file": "waiting-room.jpg"
       },
       "orientation": {
@@ -30,7 +30,7 @@
         "name": "panorama"
       },
       "name": "Welcome Room",
-      "likes": 134,
+      "likes": 0,
       "liked": false,
       "asset": {
         "type": {
