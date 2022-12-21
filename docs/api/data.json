@@ -14,8 +14,8 @@
           "id": 1,
           "name": "image"
         },
-        "folder": "/textures/waiting/",
-        "file": "waiting-room.jpg"
+        "folder": "/textures/waiting-room/",
+        "file": "waiting.jpg"
       },
       "orientation": {
         "latitude": 0,
@@ -38,14 +38,48 @@
           "name": "image"
         },
         "folder": "/textures/welcome-room/",
-        "file": "welcome-room.jpg"
+        "file": "welcome.jpg"
       },
       "orientation": {
-        "latitude": 0,
-        "longitude": 0
+        "latitude": 0.7,
+        "longitude": 179
       },
       "zoom": 75,
-      "items": []
+      "items": [],
+      "hidden": null,
+      "ar": null
+    }
+  ],
+  "menu": [],
+  "navmaps": [],
+  "paths": [],
+  "assets": [],
+  "users": [
+    {
+      "id": "1601892639985",
+      "username": "publisher",
+      "password": "publisher",
+      "type": "publisher",
+      "firstName": "Jhon",
+      "lastName": "Appleseed"
+    },
+    {
+      "id": "1601892639986",
+      "username": "attendee",
+      "password": "attendee",
+      "type": "attendee",
+      "firstName": "Jhon",
+      "lastName": "Appleseed"
+    },
+    {
+      "type": "self-service",
+      "firstName": "Jhon",
+      "lastName": "Appleseed",
+      "email": "jhonappleseed@gmail.com",
+      "role": 1,
+      "privacy": true,
+      "checkField": "",
+      "id": 33689673940100
     }
   ]
 }

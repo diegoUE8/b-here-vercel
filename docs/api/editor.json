@@ -14,8 +14,8 @@
           "id": 1,
           "name": "image"
         },
-        "folder": "/textures/waiting/",
-        "file": "waiting-room.jpg"
+        "folder": "/textures/waiting-room/",
+        "file": "waiting.jpg"
       },
       "orientation": {
         "latitude": 0,
@@ -38,14 +38,16 @@
           "name": "image"
         },
         "folder": "/textures/welcome-room/",
-        "file": "welcome-room.jpg"
+        "file": "welcome.jpg"
       },
       "orientation": {
-        "latitude": 0,
-        "longitude": 0
+        "latitude": 0.7,
+        "longitude": 179
       },
       "zoom": 75,
-      "items": []
+      "items": [],
+      "hidden": null,
+      "ar": null
     }
   ],
   "menu": [],
