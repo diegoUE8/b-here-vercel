@@ -1,12 +1,43 @@
 {
   "version": 2,
+  "public": true,
+  "framework": null,
+  "buildCommand": "npm run build",
+  "outputDirectory": ".",
   "builds": [
     {
       "src": "index.js",
-      "use": "@now/node"
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": [
+          "dist/**",
+          "docs/**/*.html",
+          "docs/**/*.json",
+          "docs/**/*.js",
+          "docs/**/*.css",
+          "server/sso/sso.key",
+          "server/views/**/*.ejs"
+        ]
+      }
+    },
+    {
+      "src": "docs/**",
+      "use": "@vercel/static",
+      "config": {
+        "includeFiles": [
+          "dist/**",
+          "docs/**/*.html",
+          "docs/**/*.json",
+          "docs/**/*.js",
+          "docs/**/*.css"
+        ]
+      }
     }
   ],
   "routes": [
+    {
+      "handle": "filesystem"
+    },
     {
       "src": "/(.*)",
       "dest": "index.js"

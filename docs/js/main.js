@@ -1,5 +1,5 @@
 /**
- * @license beta-bhere-development v1.0.22
+ * @license beta-bhere-development v1.0.23
  * (c) 2022 Luca Zampetti <lzampetti@gmail.com>
  * License: MIT
  */
@@ -256,8 +256,8 @@ const CHUNK_BACKGROUND =
 `
 <!-- background -->
 <div class="background" [class]="{ 'background--image': ('background.image' | env), 'background--video': ('background.video' | env) }" *if="state.status != 'connected'">
-	<img [src]="'background.image' | env" *if="'background.image' | env" />
-	<video [src]="'background.video' | env" *if="'background.video' | env" oncanplay="this.muted = true; this.classList.add('ready');" playsinline autoplay muted loop></video>
+	<img [src]="'background.image' | env | asset" *if="'background.image' | env" />
+	<video [src]="'background.video' | env | asset" *if="'background.video' | env" oncanplay="this.muted = true; this.classList.add('ready');" playsinline autoplay muted loop></video>
 </div>
 `;
 const CHUNK_LOGO =
@@ -476,12 +476,12 @@ const CHUNK_EMBED =
 
   /*
   background: {
-  	// image: '/Modules/B-Here/Client/docs/img/background.jpg',
-  	video: '/Modules/B-Here/Client/docs/img/background.mp4',
+  	// image: 'img/background.jpg',
+  	video: 'img/background.mp4',
   },
   */
   selfServiceAudio: null,
-  // '/Modules/B-Here/Client/docs/audio/self-service.mp3',
+  // 'audio/self-service.mp3',
   colors: {
     menuBackground: '#000000',
     menuForeground: '#ffffff',
@@ -606,12 +606,12 @@ const CHUNK_EMBED =
 
   /*
   background: {
-  	// image: '/b-here/img/background.jpg',
-  	video: '/b-here/img/background.mp4',
+  	// image: 'img/background.jpg',
+  	video: 'img/background.mp4',
   },
   */
   selfServiceAudio: null,
-  // '/b-here/audio/self-service.mp3',
+  // 'audio/self-service.mp3',
   colors: {
     menuBackground: '#000000',
     menuForeground: '#ffffff',
@@ -626,8 +626,8 @@ const CHUNK_EMBED =
     disabledViewTypes: ['waiting-room'],
     disabledViewItemTypes: ['texture']
   },
-  assets: '/b-here/',
-  dist: '/b-here/dist/',
+  assets: '/docs/',
+  dist: '/dist/',
   workers: {
     image: './js/workers/image.service.worker.js',
     prefetch: './js/workers/prefetch.service.worker.js'
@@ -680,9 +680,11 @@ const PARAMS = NODE ? {
   get: () => {}
 } : new URLSearchParams(window.location.search);
 const DEBUG = PARAMS.get('debug') != null;
-const BASE_HREF = NODE ? null : document.querySelector('base').getAttribute('href');
+NODE ? null : document.querySelector('base').getAttribute('href');
 const HEROKU = NODE ? false : window && window.location.host.indexOf('herokuapp') !== -1;
-const STATIC = NODE ? false : HEROKU || window && (window.location.port === '41789' || window.location.port === '5000' || window.location.port === '6443' || window.location.host === 'actarian.github.io');
+const VERCEL = NODE ? false : window && window.location.host.indexOf('vercel.app') !== -1;
+const DEPLOYED = HEROKU || VERCEL;
+const STATIC = NODE ? false : DEPLOYED || window && (window.location.port === '41789' || window.location.port === '5000' || window.location.port === '6443' || window.location.host === 'actarian.github.io');
 const DEVELOPMENT = NODE ? false : window && ['localhost', '127.0.0.1', '0.0.0.0'].indexOf(window.location.host.split(':')[0]) !== -1;
 const PRODUCTION = !DEVELOPMENT;
 const ENV = {
@@ -701,10 +703,10 @@ class Environment {
   }
 
   get href() {
-    if (HEROKU) {
+    if (DEPLOYED) {
       return this.githubDocs;
     } else {
-      return BASE_HREF;
+      return this.assets;
     }
   }
 
@@ -773,7 +775,9 @@ const defaultOptions$3 = {
 const defaultAppOptions = {
   channelName: 'BHere',
   flags: {
-    heroku: HEROKU
+    heroku: HEROKU,
+    vercel: VERCEL,
+    deployed: DEPLOYED
   },
   navs: {
     iconMinScale: 1,
@@ -5518,8 +5522,8 @@ AccessComponent.meta = {
 		<div class="page page--access">
 			<!-- background -->
 			<div class="background" [class]="{ 'background--image': ('background.image' | env), 'background--video': ('background.video' | env) }" *if="state.status != 'connected'">
-				<img [src]="'background.image' | env" *if="'background.image' | env" />
-				<video [src]="'background.video' | env" *if="'background.video' | env" oncanplay="this.muted = true; this.classList.add('ready');" playsinline autoplay muted loop></video>
+				<img [src]="'background.image' | env | asset" *if="'background.image' | env" />
+				<video [src]="'background.video' | env | asset" *if="'background.video' | env" oncanplay="this.muted = true; this.classList.add('ready');" playsinline autoplay muted loop></video>
 			</div>
 			<!-- access -->
 			<div class="ui ui--info ui--info-centered" *if="state.status == 'access'">
@@ -11651,7 +11655,7 @@ class ViewService {
 
   static data$() {
     if (!this.data$_) {
-      const dataUrl = (environment.flags.production ? '/api/view' : './api/data.json') + '?lang=' + LanguageService.lang;
+      const dataUrl = (environment.flags.production ? '/api/view' : `${environment.assets}api/data.json`) + '?lang=' + LanguageService.lang;
       this.data$_ = HttpService.get$(dataUrl).pipe(operators.map(data => {
         data.views = data.views.map(view => mapView(view));
         this.data = data;
@@ -25255,7 +25259,7 @@ ModelNavComponent.meta = {
       selfServiceAudio.setAttribute('autoplay', 'true');
       selfServiceAudio.setAttribute('loop', 'true');
       selfServiceAudio.volume = 0.5;
-      selfServiceAudio.src = environment.selfServiceAudio;
+      selfServiceAudio.src = environment.getPath(environment.selfServiceAudio);
       const {
         node
       } = rxcomp.getContext(this);
@@ -25373,7 +25377,7 @@ AgoraComponent.meta = {
 				${CHUNK_CREDITS}
 				${CHUNK_COPYRIGHT}
 			</span>
-			<a [routerLink]="':lang.editor' | route" class="btn--absolute" *if="('editor' | flag) && !('heroku' | flag) && state.role == 'publisher' && (state.status == 'checklist' || state.status == 'link')">
+			<a [routerLink]="':lang.editor' | route" class="btn--absolute" *if="('editor' | flag) && !('deployed' | flag) && state.role == 'publisher' && (state.status == 'checklist' || state.status == 'link')">
 				<span [innerHTML]="'bhere_editor' | label"></span> <svg class="edit" width="24" height="24" viewBox="0 0 24 24"><use xlink:href="#edit"></use></svg>
 			</a>
 		</footer>

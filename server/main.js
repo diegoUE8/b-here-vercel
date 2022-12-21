@@ -6,7 +6,7 @@ const https = require('https');
 const multipart = require('connect-multiparty');
 const path = require('path');
 const session = require('express-session');
-const { staticMiddleware } = require('./static/static.js');
+// const { staticMiddleware } = require('./static/static.js');
 const { apiMiddleware, uuid, setSessionUser, RoleType } = require('./api/api.js');
 const SingleSignOnGuard = require('./sso/sso.guard.js');
 const SingleSignOnTokenInterceptor = require('./sso/sso-token.interceptor.js');
@@ -22,7 +22,7 @@ function serve(options) {
 		dirname: dirname,
 		port: 5000,
 		portHttps: 6443,
-		baseHref: '/b-here/',
+		baseHref: '/',
 		charset: 'utf8',
 		assets: 'assets/',
 		cacheMode: 'file',
@@ -42,13 +42,11 @@ function serve(options) {
 	options.host = `http://localhost:${options.port}`;
 	options.hostHttps = `https://localhost:${options.portHttps}`;
 
-	const staticMiddleware_ = staticMiddleware(options);
+	// const staticMiddleware_ = staticMiddleware(options);
 	const apiMiddleware_ = apiMiddleware(options);
 
+	const heroku = (process.env._ && process.env._.indexOf('heroku') !== -1);
 	const vercelUrl = process.env.VERCEL_URL;
-	const heroku = (process.env._ && process.env._.indexOf('heroku'));
-
-	console.log(process.env);
 
 	const app = express();
 	app.use(session({
@@ -63,6 +61,7 @@ function serve(options) {
 	app.use(express.urlencoded({ extended: true }));
 	app.use(express.json());
 	app.use(express.raw());
+	app.use('/docs', express.static('docs'));
 	app.use(morgan('dev'));
 	app.engine('ejs', engine);
 	app.set('views', options.dirname + '/server/views');
@@ -70,10 +69,11 @@ function serve(options) {
 	app.use(SingleSignOnTokenInterceptor);
 	app.use('/sso', ssoRouter);
 
-	app.use('*', staticMiddleware_);
+	// app.use('*', staticMiddleware_);
 	app.use('*', apiMiddleware_);
+	app.use('/api', express.static('docs/api'));
 
-	app.post('/api/upload', multipartMiddleware, function(request, response) {
+	app.post('/api/upload', multipartMiddleware, function (request, response) {
 		if (options.accessControlAllowOrigin) {
 			response.header('Access-Control-Allow-Origin', '*');
 		}
@@ -101,7 +101,7 @@ function serve(options) {
 			}
 		});
 	});
-	app.options('/api/upload', function(request, response) {
+	app.options('/api/upload', function (request, response) {
 		console.log('OPTIONS');
 		if (options.accessControlAllowOrigin) {
 			response.header('Access-Control-Allow-Origin', '*');
@@ -109,21 +109,33 @@ function serve(options) {
 		response.status(200).send();
 	});
 
+	/*
+	app.get('/api/env', function(request, response) {
+		response.json(process.env);
+	});
+
+	app.get('/api/files', async function(request, response) {
+		const files = await getFiles(dirname);
+		response.json(files);
+	});
+	*/
+
+	// const isDist = process.env.npm_config_dist || process.env.VERCEL_ENV === 'production';
 	const isDist = process.env.npm_config_dist;
 	console.log('isDist', isDist);
 
 	const defaultLanguage = 'en';
 
-	app.get('/', function(request, response) {
+	app.get('/', function (request, response) {
 		response.sendFile(path.join(dirname, isDist ? `/docs/bhere__${defaultLanguage}.html` : `/docs/index__${defaultLanguage}.html`));
 	});
 
-	app.get('/:lang/', function(request, response) {
+	app.get('/:lang/', function (request, response) {
 		console.log(request.params);
 		response.sendFile(path.join(dirname, isDist ? `/docs/bhere__${request.params.lang}.html` : `/docs/index__${request.params.lang}.html`));
 	});
 
-	app.get('/:lang/:path/', function(request, response) {
+	app.get('/:lang/:path/', function (request, response) {
 		console.log(request.params);
 		response.sendFile(path.join(dirname, isDist ? `/docs/bhere__${request.params.lang}.html` : `/docs/index__${request.params.lang}.html`));
 	});
