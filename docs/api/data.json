@@ -29004,6 +29004,71 @@
           "id": 181369384243200
         }
       }
+    },
+    {
+      "type": {
+        "id": 5,
+        "name": "model"
+      },
+      "name": "Chirurgia ginecologica",
+      "asset": {
+        "type": {
+          "id": 1,
+          "name": "image"
+        },
+        "folder": "/uploads/",
+        "file": "74160038723300_background_plane.jpg",
+        "id": 74160070624200
+      },
+      "orientation": {
+        "latitude": 2.3,
+        "longitude": 103.80000000000001
+      },
+      "zoom": 75,
+      "id": 74183875147500,
+      "items": [
+        {
+          "type": {
+            "id": 4,
+            "name": "model"
+          },
+          "asset": {
+            "type": {
+              "id": 3,
+              "name": "model"
+            },
+            "folder": "/uploads/",
+            "file": "74206809560400_Chirurgia_Ginecologica.glb",
+            "id": 74172341046100,
+            "chromaKeyColor": null
+          },
+          "id": 74183905465900,
+          "links": [],
+          "position": null,
+          "rotation": null
+        }
+      ],
+      "hidden": null,
+      "ar": {
+        "usdz": {
+          "type": {
+            "id": 3,
+            "name": "model"
+          },
+          "folder": "/uploads/",
+          "file": "74216232603700_Chirurgia_Ginecologica.usdz",
+          "id": 74216264509200
+        },
+        "gltf": {
+          "type": {
+            "id": 3,
+            "name": "model"
+          },
+          "folder": "/uploads/",
+          "file": "74220724897300_Chirurgia_Ginecologica.glb",
+          "id": 74220745505300
+        }
+      }
     }
   ],
   "menu": [
@@ -29531,6 +29596,13 @@
       "viewId": 179818617437500,
       "name": "Formazione espansiva",
       "order": 30
+    },
+    {
+      "id": 74323832397800,
+      "parentId": 180155408132300,
+      "viewId": 74183875147500,
+      "name": "Chirurgia ginecologica",
+      "order": 40
     },
     {
       "id": 40982979157200,
@@ -34648,6 +34720,43 @@
       "folder": "/uploads/",
       "file": "339792223953000_scapola.glb",
       "id": 181369384243200
+    },
+    {
+      "type": {
+        "id": 1,
+        "name": "image"
+      },
+      "folder": "/uploads/",
+      "file": "74160038723300_background_plane.jpg",
+      "id": 74160070624200
+    },
+    {
+      "type": {
+        "id": 3,
+        "name": "model"
+      },
+      "folder": "/uploads/",
+      "file": "74206809560400_Chirurgia_Ginecologica.glb",
+      "id": 74172341046100,
+      "chromaKeyColor": null
+    },
+    {
+      "type": {
+        "id": 3,
+        "name": "model"
+      },
+      "folder": "/uploads/",
+      "file": "74216232603700_Chirurgia_Ginecologica.usdz",
+      "id": 74216264509200
+    },
+    {
+      "type": {
+        "id": 3,
+        "name": "model"
+      },
+      "folder": "/uploads/",
+      "file": "74220724897300_Chirurgia_Ginecologica.glb",
+      "id": 74220745505300
     }
   ],
   "users": [
