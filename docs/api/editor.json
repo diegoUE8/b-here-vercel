@@ -29069,6 +29069,31 @@
           "id": 74220745505300
         }
       }
+    },
+    {
+      "type": {
+        "id": 4,
+        "name": "room-3d"
+      },
+      "name": "FERROLI SHOWROOM",
+      "asset": {
+        "type": {
+          "id": 3,
+          "name": "model"
+        },
+        "folder": "/uploads/",
+        "file": "84840381811900_showroom-dim.glb",
+        "id": 84840418631300
+      },
+      "orientation": {
+        "latitude": -6.399999999999999,
+        "longitude": 177.90000000000003
+      },
+      "zoom": 75,
+      "id": 84848535190600,
+      "items": [],
+      "hidden": null,
+      "ar": null
     }
   ],
   "menu": [
@@ -29393,6 +29418,13 @@
       "viewId": 193662481119900,
       "name": "3D - Room",
       "order": 60
+    },
+    {
+      "id": 84993796071300,
+      "parentId": 513904544668199,
+      "viewId": 84848535190600,
+      "name": "3D - Ferroli Showroom",
+      "order": 70
     },
     {
       "id": 513946905350299,
@@ -34757,6 +34789,15 @@
       "folder": "/uploads/",
       "file": "74220724897300_Chirurgia_Ginecologica.glb",
       "id": 74220745505300
+    },
+    {
+      "type": {
+        "id": 3,
+        "name": "model"
+      },
+      "folder": "/uploads/",
+      "file": "84840381811900_showroom-dim.glb",
+      "id": 84840418631300
     }
   ],
   "users": [
