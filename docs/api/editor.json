@@ -29091,7 +29091,166 @@
       },
       "zoom": 75,
       "id": 84848535190600,
-      "items": [],
+      "items": [
+        {
+          "type": {
+            "id": 1,
+            "name": "nav"
+          },
+          "title": "SPATIAL LINK",
+          "abstract": null,
+          "viewId": 84848535190600,
+          "hook": null,
+          "hookExtra": null,
+          "keepOrientation": false,
+          "important": false,
+          "transparent": false,
+          "position": [
+            -3.8302186608399458,
+            -1.6207586728994228,
+            -2.5439251948496135
+          ],
+          "rotation": [
+            -1.57069632679523,
+            0,
+            0,
+            "XYZ"
+          ],
+          "scale": [
+            20,
+            5,
+            1
+          ],
+          "asset": null,
+          "link": null,
+          "id": 12906593266900,
+          "links": [
+            {
+              "title": "CLICK HERE",
+              "href": "https://www.spatial.io/s/FERROLI-SHOWROOM-63dbb34797f9eb7a4eef9e41?share=2078746244534291241",
+              "target": "_blank"
+            }
+          ]
+        },
+        {
+          "type": {
+            "id": 4,
+            "name": "model"
+          },
+          "position": [
+            0.4905139756445802,
+            -0.20415013182793174,
+            -3.74392181309358
+          ],
+          "rotation": [
+            0,
+            -1.6,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "asset": {
+            "type": {
+              "id": 3,
+              "name": "model"
+            },
+            "folder": "/uploads/",
+            "file": "13332304656200_tablet.glb",
+            "id": 13332317845800,
+            "chromaKeyColor": null
+          },
+          "id": 13333446764700,
+          "links": []
+        },
+        {
+          "type": {
+            "id": 2,
+            "name": "plane"
+          },
+          "position": [
+            -3.683662402749307,
+            0.015034490912704073,
+            -2.518352756117165
+          ],
+          "rotation": [
+            -8.271806125530279e-25,
+            1.5707963267948966,
+            0,
+            "XYZ"
+          ],
+          "scale": [
+            1,
+            0.5,
+            1
+          ],
+          "asset": {
+            "type": {
+              "id": 4,
+              "name": "publisher-stream",
+              "file": "publisherStream"
+            },
+            "folder": "",
+            "file": "publisherStream",
+            "id": 13434987462700,
+            "chromaKeyColor": null,
+            "autoplay": false,
+            "loop": false,
+            "index": 0
+          },
+          "id": 13385730080300,
+          "links": []
+        },
+        {
+          "type": {
+            "id": 2,
+            "name": "plane"
+          },
+          "position": [
+            -3.68,
+            -0.5800000000000003,
+            -2.52
+          ],
+          "rotation": [
+            -8.271806125530279e-25,
+            1.5707963267948966,
+            0,
+            "XYZ"
+          ],
+          "scale": [
+            1,
+            0.5,
+            1
+          ],
+          "asset": {
+            "type": {
+              "id": 2,
+              "name": "video"
+            },
+            "folder": "/uploads/",
+            "file": "13512064892100_NewLevelSequence.mp4",
+            "id": 13512077196200,
+            "locale": {
+              "en": {
+                "type": {
+                  "id": 2,
+                  "name": "video"
+                },
+                "folder": "/uploads/",
+                "file": "13512064892100_NewLevelSequence.mp4",
+                "id": 13512077196200
+              }
+            },
+            "chromaKeyColor": null,
+            "autoplay": true,
+            "loop": true
+          },
+          "id": 13451295609500,
+          "links": []
+        }
+      ],
       "hidden": null,
       "ar": null
     }
@@ -34798,6 +34957,61 @@
       "folder": "/uploads/",
       "file": "84840381811900_showroom-dim.glb",
       "id": 84840418631300
+    },
+    {
+      "type": {
+        "id": 3,
+        "name": "model"
+      },
+      "folder": "/uploads/",
+      "file": "13260570701400_tablet.glb",
+      "id": 12956442623100,
+      "chromaKeyColor": null
+    },
+    {
+      "type": {
+        "id": 3,
+        "name": "model"
+      },
+      "folder": "/uploads/",
+      "file": "13332304656200_tablet.glb",
+      "id": 13332317845800
+    },
+    {
+      "type": {
+        "id": 4,
+        "name": "publisher-stream",
+        "file": "publisherStream"
+      },
+      "folder": "",
+      "file": "publisherStream",
+      "id": 13434987462700,
+      "chromaKeyColor": null,
+      "autoplay": false,
+      "loop": false
+    },
+    {
+      "type": {
+        "id": 2,
+        "name": "video"
+      },
+      "folder": "/uploads/",
+      "file": "13512064892100_NewLevelSequence.mp4",
+      "id": 13512077196200,
+      "locale": {
+        "en": {
+          "type": {
+            "id": 2,
+            "name": "video"
+          },
+          "folder": "/uploads/",
+          "file": "13512064892100_NewLevelSequence.mp4",
+          "id": 13512077196200
+        }
+      },
+      "chromaKeyColor": null,
+      "autoplay": true,
+      "loop": true
     }
   ],
   "users": [
