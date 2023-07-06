@@ -3,6 +3,41 @@ All notable changes to the "beta-bhere" library will be documented in this file.
 
 ---
 
+## [1.0.28] - 2023-06-29
+
+### Fixing
+- Support of legacy moz & webkit RTC for agora-rtc-sdk 3.6.2
+
+---
+
+## [1.0.27] - 2023-06-01
+
+### Added
+- Attendee streaming profile
+
+---
+
+## [1.0.26] - 2023-05-03
+
+### Modified
+- PanoramaLoader nextAttendeeStream
+
+---
+
+## [1.0.25] - 2023-02-28
+
+### Modified
+- try in ar
+
+---
+
+## [1.0.24] - 2023-01-16
+
+### Modified
+- world lights & zoom
+
+---
+
 ## [1.0.23] - 2022-12-21
 
 ### Added
